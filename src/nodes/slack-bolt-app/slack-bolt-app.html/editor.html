@@ -1,0 +1,46 @@
+<script type="text/html" data-template-name="slack-bolt-app">
+  <div class="form-row">
+    <label for="node-config-input-name">Name</label>
+    <input type="text" id="node-config-input-name" placeholder="name" />
+  </div>
+
+  <div class="form-row">
+    <label for="node-config-input-token">Bot Token</label>
+    <input type="text" id="node-config-input-token" />
+  </div>
+  <!--
+    <div class="form-row">
+      <label for="node-config-input-signingSecret">Signing Secret</label>
+      <input type="text" id="node-config-input-signingSecret" />
+    </div>
+  -->
+  <div class="form-row">
+    <label for="node-input-logLevel"><i class="fa fa-bug"></i> Log Level</label>
+    <input type="text" id="node-input-logLevel" />
+  </div>
+
+  <div class="form-row">
+    <h3 class="red-ui-help-title">Events & Actions:</h3>
+    For an event and/or action handling it needs to enable the socket mode
+    active and the App Token is required.
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-socketMode">Socket</label>
+    <input type="checkbox" id="node-config-input-socketMode" />
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-port"
+      ><i class="fa fa-bookmark"></i> Port</label
+    >
+    <input
+      type="number"
+      id="node-config-input-port"
+      placeholder="3000"
+      autocomplete="off"
+    />
+  </div>
+  <div class="form-row">
+    <label for="node-config-input-appToken">App Token</label>
+    <input type="text" id="node-config-input-appToken" />
+  </div>
+</script>

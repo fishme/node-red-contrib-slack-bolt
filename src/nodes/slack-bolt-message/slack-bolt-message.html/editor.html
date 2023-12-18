@@ -1,0 +1,48 @@
+<script type="text/html" data-template-name="slack-bolt-message">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-client"
+      ><i class="fa fa-plug" aria-hidden="true"> Slack App</i></label
+    >
+    <input type="text" id="node-input-client" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-channel"><i class="fa fa-users"></i> Channel</label>
+    <input type="text" id="node-input-channel" placeholder="#general" />
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-property"
+      ><i class="fa fa-commenting-o"></i> Property</label
+    >
+    <input type="text" id="node-input-property" placeholder="payload" />
+    <input type="hidden" id="node-input-propertyType" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-propertySendType"
+      ><i class="fa fa-commenting-o"></i> What?</label
+    >
+    <input type="text" id="node-input-propertySendType" />
+  </div>
+
+  <div class="form-row">
+    Send direct message: <i>(overwrite settings above)</i>
+  </div>
+  <div class="form-row">
+    <label for="node-input-text"><i class="fa fa-commenting-o"></i> Text</label>
+    <input type="text" id="node-input-text" placeholder="Hello World" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-blocks"><i class="fa fa-th"></i> Blocks</label>
+    <input type="text" id="node-input-blocks" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-attachments"
+      ><i class="fa fa-paperclip"></i> Attachment</label
+    >
+    <input type="text" id="node-input-attachments" />
+  </div>
+</script>
