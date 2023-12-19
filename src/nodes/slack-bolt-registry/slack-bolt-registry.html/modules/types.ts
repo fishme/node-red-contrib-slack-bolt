@@ -5,5 +5,5 @@ import { SlackBoltRegistryOptions } from '../../shared/types';
 export interface SlackBoltRegistryEditorNodeProperties
   extends EditorNodeProperties,
     SlackBoltRegistryOptions {
-  client: any;
+  client: string;
 }

@@ -1,12 +1,16 @@
-import { SlackBoltMessageNode } from '../slack-bolt-message/modules/types';
+import {
+  SlackBoltMessageNode,
+  SlackBoltMessageNodeDef,
+} from '../slack-bolt-message/modules/types';
 
 export class MessageTransporter {
-  public msg: any;
-  public nodeClientSetting: any;
-  public nodeSetting: any;
+  public nodeSetting: SlackBoltMessageNodeDef;
 
   public node: SlackBoltMessageNode;
-  constructor(node: any, nodeSetting: any) {
+  constructor(
+    node: SlackBoltMessageNode,
+    nodeSetting: SlackBoltMessageNodeDef
+  ) {
     this.node = node;
 
     this.nodeSetting = nodeSetting;
@@ -39,7 +43,7 @@ export class MessageTransporter {
   };
 
   getByProperty = (msg: any) => {
-    let value: any;
+    let value: unknown;
 
     switch (this.nodeSetting.propertyType) {
       case 'msg':
@@ -50,8 +54,6 @@ export class MessageTransporter {
         break;
       case 'global':
         value = this.node.context().global.get(this.nodeSetting.property);
-        break;
-      default:
         break;
     }
 

@@ -8,6 +8,7 @@ import { options } from './methods/options';
 import { shortcuts } from './methods/shortcuts';
 
 const NONE_REGISTRATIONS = 'none registrations';
+
 const registryMethods = (
   SlackApp: App,
   msg: any,

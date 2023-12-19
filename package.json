@@ -2,11 +2,20 @@
   "name": "node-red-contrib-slack-bolt",
   "version": "1.0.0",
   "description": "Control your Slack App via Node-Red! Slack Bolt integration.",
+  "keywords": [
+    "Slack",
+    "Slack-bolt",
+    "node-red",
+    "microservice"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@fishme"
+  },
   "scripts": {
     "add-node": "node ./utils/add-node.js",
     "copy": "copyfiles -u 2 \"./src/nodes/**/*.{png,svg}\" \"./dist/nodes/\"",
-    "build:editor": "rollup -c rollup.config.js",
-    "build:editor:watch": "rollup -c rollup.config.js -w --bundleConfigAsCjs",
+    "build:editor": "rollup -c rollup.config.mjs",
+    "build:editor:watch": "rollup -c rollup.config.mjs -w --bundleConfigAsCjs",
     "build:runtime": "tsc -p tsconfig.runtime.json",
     "build:runtime:watch": "tsc -p tsconfig.runtime.watch.json --watch --preserveWatchOutput",
     "build": "rm -rf dist && yarn copy && yarn build:editor && yarn build:runtime",
@@ -16,9 +25,12 @@
     "lint": "prettier --ignore-path .eslintignore --check '**/*.{js,ts,md}'; eslint --ext .js,.ts .",
     "lint:fix": "prettier --ignore-path .eslintignore --write '**/*.{js,ts,md}'; eslint --ext .js,.ts . --fix"
   },
-  "type": "module",
   "author": "David Hohl",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fishme/node-red-contrib-slack-bolt.git"
+  },
   "node-red": {
     "nodes": {
       "slack-bolt-registry": "./dist/nodes/slack-bolt-registry/slack-bolt-registry.js",

@@ -14,7 +14,7 @@ const nodeInit: NodeInitializer = (RED): void => {
   ): void {
     RED.nodes.createNode(this, config);
 
-    const node = this;
+    const _node = this;
     this.on('input', async (msg: any, send, done) => {
       const SlackConfig: SlackBoltAppNode = <SlackBoltAppNode>(
         RED.nodes.getNode(config.client)
@@ -22,7 +22,7 @@ const nodeInit: NodeInitializer = (RED): void => {
       const SlackApp: App = SlackConfig.client;
 
       const Transporter: MessageTransporter = new MessageTransporter(
-        node,
+        _node,
         config
       );
 
@@ -31,11 +31,11 @@ const nodeInit: NodeInitializer = (RED): void => {
           Transporter.setMessage(msg)
         );
 
-        status.success(node, 'sent message');
+        status.success(_node, 'sent message');
       } catch (err: any) {
         this.error(err);
 
-        status.error(node, err.message);
+        status.error(_node, err.message);
       }
       send(msg);
       done();

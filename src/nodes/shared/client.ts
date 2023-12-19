@@ -9,7 +9,7 @@ const DefaultPort: string = '3000';
 
 const connect = (config: SlackBoltAppNodeDef): App => {
   // signingSecret needed for Auth0
-  let configuration = {
+  const configuration = {
     token: config.token,
     // signingSecret: config.signingSecret,
     appToken: config.appToken,

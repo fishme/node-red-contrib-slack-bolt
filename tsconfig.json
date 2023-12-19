@@ -5,7 +5,7 @@
     "lib": ["es2018", "esnext.asynciterable", "dom"],
     "allowJs": false,
     "noEmitOnError": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "dist",
     "rootDir": "src",
     "removeComments": false,

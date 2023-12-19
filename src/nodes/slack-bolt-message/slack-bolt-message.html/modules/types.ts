@@ -6,7 +6,7 @@ export interface SlackBoltMessageEditorNodeProperties
   extends EditorNodeProperties,
     SlackBoltMessageOptions {
   text: string;
-  client: any;
+  client: string;
   blocks: string;
   property: string;
   propertyType: string;

@@ -7,6 +7,12 @@ export interface SlackBoltMessageNodeDef
     SlackBoltMessageOptions {
   channel: string;
   client: string;
+  blocks: string;
+  property: string;
+  propertyType: string;
+  propertySendType: string;
+  attachments: string;
+  text: string;
 }
 
 // export interface SlackBoltMessageNode extends Node {}
