@@ -8,9 +8,6 @@
     "node-red",
     "microservice"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@fishme"
-  },
   "scripts": {
     "add-node": "node ./utils/add-node.js",
     "copy": "copyfiles -u 2 \"./src/nodes/**/*.{png,svg}\" \"./dist/nodes/\"",
