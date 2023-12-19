@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-slack-bolt",
+  "name": "@headless-architecture/node-red-contrib-slack-bolt",
   "version": "1.0.0",
   "description": "Control your Slack App via Node-Red! Slack Bolt integration.",
   "keywords": [
