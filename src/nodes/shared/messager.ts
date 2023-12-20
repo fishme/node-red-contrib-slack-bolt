@@ -20,15 +20,23 @@ export class MessageTransporter {
     const message: any = {
       channel: this.nodeSetting.channel,
     };
+    const sendtype: string =
+      'topic' in msg && msg.topic
+        ? msg.topic
+        : this.nodeSetting.propertySendType;
 
     if (this.nodeSetting.property) {
-      // use msg,flow,global context
-      if (this.nodeSetting.propertySendType === 'text') {
+      if (sendtype === 'text') {
         message.text = this.getByProperty(msg);
-      } else if (this.nodeSetting.propertySendType === 'blocks') {
+      } else if (sendtype === 'blocks') {
         message.blocks = this.getByProperty(msg);
-      } else if (this.nodeSetting.propertySendType === 'attachments') {
+      } else if (sendtype === 'attachments') {
         // missing
+        this.node.error('Attachments are not implemented.');
+      } else {
+        this.node.error(
+          `Topic >> ${sendtype} << is not valid. Please use "text" or "blocks".`
+        );
       }
     }
 

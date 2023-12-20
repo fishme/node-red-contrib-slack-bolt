@@ -1,7 +1,7 @@
 display_information:
   name: Node-Red-Integration
   description: Integrate Slack with Node-Red instance
-  background_color: "#4f4e4b"
+  background_color: '#4f4e4b'
 features:
   app_home:
     home_tab_enabled: true
@@ -10,6 +10,15 @@ features:
   bot_user:
     display_name: Node-Red-demo-app
     always_online: true
+  shortcuts:
+    - name: need_drink
+      type: global
+      callback_id: need_drink
+      description: modal view for approve and deny
+    - name: open_modal
+      type: global
+      callback_id: open_modal
+      description: open simple modal
   slash_commands:
     - command: /node-red
       description: test

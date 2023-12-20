@@ -47,7 +47,7 @@ RED.nodes.registerType<SlackBoltMessageEditorNodeProperties>(
         types: [
           {
             value: 'textmode',
-            options: ['blocks', 'text', 'attachments'],
+            options: ['blocks', 'text'],
           },
         ],
       });

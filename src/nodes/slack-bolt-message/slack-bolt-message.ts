@@ -16,17 +16,16 @@ const nodeInit: NodeInitializer = (RED): void => {
 
     const _node = this;
     this.on('input', async (msg: any, send, done) => {
-      const SlackConfig: SlackBoltAppNode = <SlackBoltAppNode>(
-        RED.nodes.getNode(config.client)
-      );
-      const SlackApp: App = SlackConfig.client;
-
-      const Transporter: MessageTransporter = new MessageTransporter(
-        _node,
-        config
-      );
-
       try {
+        const SlackConfig: SlackBoltAppNode = <SlackBoltAppNode>(
+          RED.nodes.getNode(config.client)
+        );
+        const SlackApp: App = SlackConfig.client;
+        const Transporter: MessageTransporter = new MessageTransporter(
+          _node,
+          config
+        );
+
         msg.payload = await SlackApp.client.chat.postMessage(
           Transporter.setMessage(msg)
         );

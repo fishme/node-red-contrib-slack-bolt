@@ -9,8 +9,8 @@ RED.nodes.registerType<SlackBoltAppEditorNodeProperties>('slack-bolt-app', {
   defaults: {
     name: { value: '' },
     token: { value: '', required: true },
-    signingSecret: { value: '', required: true },
-    logLevel: { value: '', required: true },
+    signingSecret: { value: '' },
+    logLevel: { value: '' },
     socketMode: { value: true },
     port: { value: 3000 },
     appToken: { value: '' },
@@ -23,7 +23,7 @@ RED.nodes.registerType<SlackBoltAppEditorNodeProperties>('slack-bolt-app', {
       typeField: '',
       types: [
         {
-          value: 'logLevel',
+          value: 'logmode',
           options: ['error', 'warn', 'info', 'debug'],
         },
       ],
