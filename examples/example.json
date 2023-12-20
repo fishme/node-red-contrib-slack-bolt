@@ -12,10 +12,7 @@
     "type": "group",
     "z": "1fd29692524d1ecb",
     "name": "",
-    "style": {
-      "fill": "#bfc7d7",
-      "label": true
-    },
+    "style": { "fill": "#bfc7d7", "label": true },
     "nodes": [
       "66d82a9b2adba28f",
       "a1af82db52869929",
@@ -34,9 +31,9 @@
       "509fc660e5a7454f",
       "b9b5a6a13cde4552"
     ],
-    "x": 94,
+    "x": 134,
     "y": 199,
-    "w": 1412,
+    "w": 1372,
     "h": 682
   },
   {
@@ -44,7 +41,7 @@
     "type": "function",
     "z": "1fd29692524d1ecb",
     "g": "9abaac9bbddc9bce",
-    "name": "Slack Registration",
+    "name": "Events",
     "func": "msg.SlackBolt = {\n    actions: [],\n    commands: [],\n    events: [],\n    shortcuts: [],\n    options: [],\n    messages: []\n};\nmsg.SlackBolt.actions.push(\n    {\n        'id': 'button_click',\n        'callback':\n            async ({ body, ack, say }) => {\n                // Acknowledge the action\n                await ack();\n                return await say(`<@${body.user.id}> clicked the button2x`);\n\n            }\n    }\n);\n\n\n\nmsg.SlackBolt.commands.push(\n    {\n        'id': '/node-red',\n        'callback':\n            async ({ command, ack, respond }) => {\n                // Acknowledge command request\n                await ack();\n\n                await respond(`${command.text}`);\n            }\n    }\n);\n\n\n\nmsg.SlackBolt.shortcuts.push({\n    'id': 'need_drink',\n    'callback':\n        async ({ shortcut, ack, client, logger }) => {\n            // Acknowledge shortcut request\n            await ack();\n\n            // Call the views.open method using one of the built-in WebClients\n            const result = await client.views.open({\n                trigger_id: shortcut.trigger_id,\n                view: {\n                    type: \"modal\",\n                    title: {\n                        type: \"plain_text\",\n                        text: \"My Node-Red Demo App\"\n                    },\n                    blocks: [\n                        {\n                            \"type\": \"section\",\n                            \"text\": {\n                                \"type\": \"mrkdwn\",\n                                \"text\": \"You have a new request:\\n*<fakeLink.toEmployeeProfile.com|Fred Enriquez - New device request>*\"\n                            }\n                        },\n                        {\n                            \"type\": \"section\",\n                            \"fields\": [\n                                {\n                                    \"type\": \"mrkdwn\",\n                                    \"text\": \"*Type:*\\nComputer (laptop)\"\n                                },\n                                {\n                                    \"type\": \"mrkdwn\",\n                                    \"text\": \"*When:*\\nSubmitted Aut 10\"\n                                },\n                                {\n                                    \"type\": \"mrkdwn\",\n                                    \"text\": \"*Last Update:*\\nMar 10, 2015 (3 years, 5 months)\"\n                                },\n                                {\n                                    \"type\": \"mrkdwn\",\n                                    \"text\": \"*Reason:*\\nAll vowel keys aren't working.\"\n                                },\n                                {\n                                    \"type\": \"mrkdwn\",\n                                    \"text\": \"*Specs:*\\n\\\"Cheetah Pro 15\\\" - Fast, really fast\\\"\"\n                                }\n                            ]\n                        },\n                        {\n                            \"type\": \"actions\",\n                            \"elements\": [\n                                {\n                                    \"type\": \"button\",\n                                    \"text\": {\n                                        \"type\": \"plain_text\",\n                                        \"emoji\": true,\n                                        \"text\": \"Approve\"\n                                    },\n                                    \"style\": \"primary\",\n                                    \"value\": \"drink_approve\"\n                                },\n                                {\n                                    \"type\": \"button\",\n                                    \"text\": {\n                                        \"type\": \"plain_text\",\n                                        \"emoji\": true,\n                                        \"text\": \"Deny\"\n                                    },\n                                    \"style\": \"danger\",\n                                    \"value\": \"drink_deny\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            });\n\n        }\n\n})\n\nmsg.SlackBolt.shortcuts.push({\n    'id': 'open_modal',\n    'callback':\n        async ({ shortcut, ack, client, logger }) => {\n            // Acknowledge shortcut request\n            await ack();\n\n            // Call the views.open method using one of the built-in WebClients\n            const result = await client.views.open({\n                trigger_id: shortcut.trigger_id,\n                view: {\n                    type: \"modal\",\n                    title: {\n                        type: \"plain_text\",\n                        text: \"My Node-Red Demo App\"\n                    },\n                    close: {\n                        type: \"plain_text\",\n                        text: \"Close\"\n                    },\n                    blocks: [\n                        {\n                            type: \"section\",\n                            text: {\n                                type: \"mrkdwn\",\n                                text: \"About the simplest modal you could conceive of :smile:\\n\\nMaybe <https://api.slack.com/reference/block-kit/interactive-components|*make the modal interactive*> or <https://api.slack.com/surfaces/modals/using#modifying|*learn more advanced modal use cases*>.\"\n                            }\n                        },\n                        {\n                            type: \"context\",\n                            elements: [\n                                {\n                                    type: \"mrkdwn\",\n                                    text: \"Psssst this modal was designed using <https://api.slack.com/tools/block-kit-builder|*Block Kit Builder*>\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            });\n\n        }\n\n})\n\n\nreturn msg;",
     "outputs": 1,
     "timeout": 0,
@@ -52,7 +49,7 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 650,
+    "x": 610,
     "y": 620,
     "wires": [["a8f863a194453f25"]]
   },
@@ -62,15 +59,7 @@
     "z": "1fd29692524d1ecb",
     "g": "9abaac9bbddc9bce",
     "name": "Register Slack Actions and Events (once)",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
+    "props": [{ "p": "payload" }, { "p": "topic", "vt": "str" }],
     "repeat": "",
     "crontab": "",
     "once": true,
@@ -78,8 +67,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 300,
-    "y": 600,
+    "x": 340,
+    "y": 620,
     "wires": [["a1af82db52869929"]]
   },
   {
@@ -108,16 +97,7 @@
     "name": "listener",
     "property": "topic",
     "propertyType": "msg",
-    "rules": [
-      {
-        "t": "eq",
-        "v": "button_click",
-        "vt": "str"
-      },
-      {
-        "t": "else"
-      }
-    ],
+    "rules": [{ "t": "eq", "v": "button_click", "vt": "str" }, { "t": "else" }],
     "checkall": "true",
     "repair": false,
     "outputs": 2,
@@ -150,7 +130,7 @@
     "g": "9abaac9bbddc9bce",
     "name": "Slack Registration",
     "client": "a2eb2e51b1167936",
-    "x": 870,
+    "x": 810,
     "y": 700,
     "wires": [["b4ccc9f550d6192e"]]
   },
@@ -178,18 +158,9 @@
     "g": "9abaac9bbddc9bce",
     "name": "Text via payload",
     "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      },
-      {
-        "p": "xxxx",
-        "v": " test23",
-        "vt": "str"
-      }
+      { "p": "payload" },
+      { "p": "topic", "vt": "str" },
+      { "p": "xxxx", "v": " test23", "vt": "str" }
     ],
     "repeat": "",
     "crontab": "",
@@ -216,7 +187,7 @@
     "statusVal": "",
     "statusType": "auto",
     "x": 1160,
-    "y": 420,
+    "y": 440,
     "wires": []
   },
   {
@@ -225,15 +196,7 @@
     "z": "1fd29692524d1ecb",
     "g": "9abaac9bbddc9bce",
     "name": "Block Message",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
+    "props": [{ "p": "payload" }, { "p": "topic", "vt": "str" }],
     "repeat": "",
     "crontab": "",
     "once": false,
@@ -251,12 +214,7 @@
     "z": "1fd29692524d1ecb",
     "g": "9abaac9bbddc9bce",
     "name": "load via context",
-    "props": [
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
+    "props": [{ "p": "topic", "vt": "str" }],
     "repeat": "",
     "crontab": "",
     "once": false,
@@ -322,8 +280,8 @@
     "propertySendType": "text",
     "text": "",
     "attachments": "",
-    "x": 880,
-    "y": 420,
+    "x": 840,
+    "y": 460,
     "wires": [["ada60a61dc4363ca"]]
   },
   {
@@ -360,10 +318,10 @@
     "id": "a2eb2e51b1167936",
     "type": "slack-bolt-app",
     "name": "Demo-app",
-    "token": "xoxb-6273178474546-6296269126880-Lpb79cX9a6jRyqniv787f746",
+    "token": "xoxb-6273178474546-6296269126880-ECspr3jlq6Hk6QdxtvuvJBsy",
     "signingSecret": "799dfcf596754ed8a6692c5dc1e7e7d4",
     "socketMode": true,
     "port": "3000",
-    "appToken": "xapp-1-A06814CKD51-6280921570886-c14a7755e49d86067d11bc18040de1be3a50daf834d608fc45e64ded964c894f"
+    "appToken": "xapp-1-A06814CKD51-6366200613638-e1cf3e87beb6956b5c5e9d8ed9e8421da4b42e4fbe5a6ab9493e6c553b26052a"
   }
 ]
