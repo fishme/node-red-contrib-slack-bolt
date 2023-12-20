@@ -91,7 +91,7 @@ open your folder via favourite shell
 
 After sucessfull installation of `@headless-architecture/node-red-contrib-slack-bolt` search in your Node-RED toolbar for `slack`
 
-![Slack Bolt Nodes](docs/img/node-red-slackbolt-nodes.png)
+![Slack Bolt Nodes](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-red-slackbolt-nodes.png)
 
 ### Nodes
 - message: send text and block messages
@@ -99,7 +99,7 @@ After sucessfull installation of `@headless-architecture/node-red-contrib-slack-
 
 **Slack App Configuration**
 
-![Slack App Configuration](docs/img/slack-app-config.png)
+![Slack App Configuration](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/slack-app-config.png)
 
 | Name | Description |
 | --- | --- |
@@ -112,7 +112,7 @@ After sucessfull installation of `@headless-architecture/node-red-contrib-slack-
 **Message**
 With this node, Node-RED is able to send direct messages into a channel. Private message to a person is not possible (yet).
 
-![Slack Message](docs/img/message-config.png)
+![Slack Message](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/message-config.png)
 
  Name | Description |
 | --- | --- |
@@ -163,12 +163,12 @@ This node enalbe the following Slack functions.
 - Shortcuts
 - Commands
 
-![Node Registry Node-RED example](./docs/img/node-registry-example.png)
+![Node Registry Node-RED example](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-registry-example.png)
 <br /><br />
 All listener needs to add once. Therefor create a Infection with:
 <br />
 <br />
-![Node Injection](./docs/img/injection.png)
+![Node Injection](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/injection.png)
 <br />
 Connect a function node with the following code.
 
@@ -183,9 +183,7 @@ e.g. Your App name @Node-Red-demo-app
 ```
 Slack will answer you with a button and if your press on the button the action will be exected with a short answer back.
 
-![Active Communication](./docs/img/node-registry-example1.png)
-
-
+![Active Communication](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-registry-example1.png)
 
 ```
 
