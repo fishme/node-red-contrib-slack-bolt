@@ -1,4 +1,4 @@
-import { App } from '@slack/bolt';
+import { App, LogLevel } from '@slack/bolt';
 
 import {
   SlackBoltAppNode,
@@ -14,7 +14,7 @@ const connect = (config: SlackBoltAppNodeDef): App => {
     // signingSecret: config.signingSecret,
     appToken: config.appToken,
     socketMode: config.socketMode,
-    logLevel: config.logLevel,
+    logLevel: LogLevel.ERROR,
   };
 
   return new App(configuration);
@@ -24,7 +24,6 @@ const start = (node: SlackBoltAppNode, config: SlackBoltAppNodeDef) => {
   (async () => {
     await node.client.start(config.port ? config.port : DefaultPort);
     node.log('⚡️ Bolt app is running!');
-    console.log('⚡️ Bolt app is running!');
   })();
 };
 

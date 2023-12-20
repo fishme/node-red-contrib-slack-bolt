@@ -11,8 +11,14 @@ const nodeInit: NodeInitializer = (RED) => {
     RED.nodes.createNode(this, config);
     const node = this;
 
-    node.client = Client.connect(config);
-    Client.start(node, config);
+    try {
+      node.client = Client.connect(config);
+      if (node.client) {
+        Client.start(node, config);
+      }
+    } catch (err) {
+      node.error(node.error);
+    }
 
     node.on('close', (done: any) => {
       Client.stop(node, config);

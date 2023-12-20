@@ -22,8 +22,8 @@ Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-s
 
 ## Setup Slack App
 
-- open Slack App
-- create new Slack App
+- open [Slack](https://api.slack.com/apps?new_app=1)
+- [create new Slack App](https://api.slack.com/apps?new_app=1)
 - Choose "from an app manifest"
 - Choose your workspace
 - Copy from /docs/Slack/manifest.yml or manifest below
@@ -33,6 +33,7 @@ Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-s
 Follow the Node-RED Slack App Configuration. 
 
 <details><summary>Slack Manifest</summary>
+
 ```
 display_information:
   name: Node-Red-Integration
@@ -76,6 +77,7 @@ settings:
   socket_mode_enabled: true
   token_rotation_enabled: false
 ```
+
 </details>
 
 ## Node-RED Installation
@@ -148,6 +150,107 @@ Simple Block for choosing a date
 
   - [Block Kit Builder](https://app.slack.com/block-kit-builder)
   - [Formating Blocks](https://api.slack.com/reference/surfaces/formatting#rich-layouts)
+
+**Registry**
+
+This node enalbe the following Slack functions.
+
+- Actions
+- Events
+- Views
+- Messages (listener, sending of messages see message node)
+- Options
+- Shortcuts
+- Commands
+
+![Node Registry Node-RED example](./docs/img/node-registry-example.png)
+<br /><br />
+All listener needs to add once. Therefor create a Infection with:
+<br />
+<br />
+![Node Injection](./docs/img/injection.png)
+<br />
+Connect a function node with the following code.
+
+
+Magic Slack Code.
+This will listen for App mention in your channel.  <br />
+e.g. Your App name @Node-Red-demo-app 
+
+```
+// write in your slack channel 
+@Node-Red-demo-app What's up?
+```
+Slack will answer you with a button and if your press on the button the action will be exected with a short answer back.
+
+![Active Communication](./docs/img/node-registry-example1.png)
+
+
+
+```
+
+// use the object to initialize your handlers. 
+// if you don't need all, clean it. 
+msg.SlackBolt = {
+    actions: [],
+    commands: [],
+    events: [],
+    shortcuts: [],
+    options: [],
+    messages: []
+};
+
+msg.SlackBolt.actions.push(
+    {
+        'id': 'button_click',
+        'callback':
+            async ({ body, ack, say }) => {
+                // Acknowledge the action
+                await ack();
+                return await say(`<@${body.user.id}> clicked the button2x`);
+
+            }
+    }
+);
+
+msg.SlackBolt.events.push(
+    {
+        'id': 'app_mention',
+        'callback':
+            async ({ event, context, client, say }) => {
+                try {
+                    const response = await say({
+                        blocks: [
+                            {
+                                type: 'section',
+                                text: {
+                                    type: 'mrkdwn',
+                                    text: `Thanks for the mention <@${event.user}>! Here's a button`,
+                                },
+                                accessory: {
+                                    type: 'button',
+                                    text: {
+                                        type: 'plain_text',
+                                        text: 'Approve me',
+                                        emoji: true,
+                                    },
+                                    value: 'button_click',
+                                    action_id: 'button_click',
+                                },
+                            },
+                        ],
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+    }
+);
+
+```
+
+
+
 
 # Node-Red Example
 copy paste into your
@@ -559,7 +662,13 @@ yarn build
 
 [Read Node-RED docs](https://nodered.org/docs/creating-nodes/first-node#testing-your-node-in-node-red) on how to install the node set into your Node-RED runtime.
 
+## Common Errors
 
+`Error: An API error occurred: channel_not_found`
+**Solution:** Your Slack App is not installed in the channel.
+
+`Error: An API error occurred: invalid_auth`
+**Solution:** Token are wrong.
 
 ## Contact
 

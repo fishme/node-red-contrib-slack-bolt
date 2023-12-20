@@ -14,22 +14,26 @@ const nodeInit: NodeInitializer = (RED): void => {
     config: SlackBoltRegistryNodeDef
   ): void {
     RED.nodes.createNode(this, config);
-
+    const _node = this;
     this.on('input', (msg: NodeMessage, send, done) => {
-      const SlackConfig: SlackBoltAppNode = <SlackBoltAppNode>(
-        RED.nodes.getNode(config.client)
-      );
+      try {
+        const SlackConfig: SlackBoltAppNode = <SlackBoltAppNode>(
+          RED.nodes.getNode(config.client)
+        );
 
-      const registrations: string = registryMethods(
-        SlackConfig.client,
-        msg,
-        send,
-        done
-      );
-      if (registrations !== NONE_REGISTRATIONS) {
-        status.success(this, registrations);
-      } else {
-        status.warning(this, NONE_REGISTRATIONS);
+        const registrations: string = registryMethods(
+          SlackConfig.client,
+          msg,
+          send,
+          done
+        );
+        if (registrations !== NONE_REGISTRATIONS) {
+          status.success(this, registrations);
+        } else {
+          status.warning(this, NONE_REGISTRATIONS);
+        }
+      } catch (err) {
+        _node.error(err);
       }
     });
   }
