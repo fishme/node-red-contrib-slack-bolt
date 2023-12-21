@@ -288,6 +288,12 @@ Node version >= 18.0.0
 
 ### Developing Nodes
 
+Link your project into your local Node-Red instance. 
+```shell
+cd /path-to-node-red/.node-red
+npm install ./path-to-this-project
+```
+
 Build & Test in Watch mode:
 
 ```shell
