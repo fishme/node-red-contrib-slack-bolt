@@ -16,7 +16,7 @@ What you can do with this [node-red](https://flows.nodered.org/node/@headless-ar
 Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-started) for JavaScript with Node-Red.
 
 ```shell
-npm i @headless-architecture/node-red-contrib-slack-bolt`
+npm i @headless-architecture/node-red-contrib-slack-bolt
 ```
 
 > [!IMPORTANT]
@@ -94,7 +94,7 @@ settings:
 open your folder via favourite shell<br />
 
 ```shell
-npm i @headless-architecture/node-red-contrib-slack-bolt`
+npm i @headless-architecture/node-red-contrib-slack-bolt
 ```
 
 ### Node-Red Configuration
