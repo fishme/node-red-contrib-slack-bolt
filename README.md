@@ -32,6 +32,7 @@ Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-s
 
 > [!TIP]
 > Don't forget to install the app also into a channel.
+
 > [!NOTE]
 > Could be that the installation of your slack app takes longer than 60min.
 
