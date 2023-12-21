@@ -26,13 +26,14 @@ npm i @headless-architecture/node-red-contrib-slack-bolt`
 
 ### Setup Slack App
 
-- open [Slack](https://api.slack.com/apps?new_app=1)
+- open [Slack App](https://api.slack.com/apps?new_app=1)
 - [create new Slack App](https://api.slack.com/apps?new_app=1)
-- Choose "from an app manifest"
+- Choose `from an app manifest`
 - Choose your workspace
 - Copy from [here](https://github.com/fishme/node-red-contrib-slack-bolt/blob/main/docs/Slack/manifest.yml) or manifest below
 - Paste into YAML section
 - create app
+- optional: If you need the app for events, then you will need a App-Level Token (see under Basic Information) select scope `connection:write`
 
 > [!TIP]
 > Don't forget to install the app also into a channel.
