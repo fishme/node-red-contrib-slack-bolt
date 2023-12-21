@@ -2,20 +2,21 @@
 
 Control your Slack App via Node-Red! Slack Bolt integration.
 
-What you can do with this node?
+What you can do with this node-red plugin?
 
 - send simple text messages
 - send complex block messages
-- events: You can listen to any [Slack Events](https://api.slack.com/events)
-- actions: You can listen to user action and respond via Node-Red
-- commands: Create your own commands with your Slack App and listen via Node-Red
-- shortcuts: Create your own global or message based shortcuts and develop it with Node-Red
+- events: listen to any [Slack Events](https://api.slack.com/events)
+- actions: listen to user action and respond via Node-Red
+- commands: create your own commands with your Slack App and listen via Node-Red
+- shortcuts: create your own global or message based shortcuts and develop it with Node-Red
 - views: Slack views
-- messages: Listing for messages in a channel
+- messages: listing for messages in a channel
 
 Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-started) for JavaScript with Node-Red.
 
-``This is an alpha version, no grarranty for productive mode!``
+> [!IMPORTANT]
+> This is an alpha version, no grarranty for productive mode!
 
 ## Usage
 
@@ -31,12 +32,8 @@ Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-s
 
 > [!TIP]
 > Don't forget to install the app also into a channel.
-
 > [!NOTE]
 > Could be that the installation of your slack app takes longer than 60min.
-
-
-Follow the Node-RED Slack App Configuration.
 
 <details><summary>Slack Manifest</summary>
 
@@ -93,7 +90,6 @@ open your folder via favourite shell<br />
 `npm i @headless-architecture/node-red-contrib-slack-bolt`
 
 ### Node-Red Configuration
-
 
 After the installation of `@headless-architecture/node-red-contrib-slack-bolt` search in your Node-RED toolbar for `slack`
 
@@ -154,12 +150,13 @@ Simple Block for choosing a date
     }
 ]
 ```
+
 </details>
 
-  - [Block Kit Builder](https://app.slack.com/block-kit-builder)
-  - [Formating Blocks](https://api.slack.com/reference/surfaces/formatting#rich-layouts)
+- [Block Kit Builder](https://app.slack.com/block-kit-builder)
+- [Formating Blocks](https://api.slack.com/reference/surfaces/formatting#rich-layouts)
 
-**Registry**
+#### Registry
 
 This node enalbe the following Slack functions.
 
@@ -180,23 +177,20 @@ All listener needs to add once. Therefor create a Infection with:
 <br />
 Connect a function node with the following code.
 
-
 Magic Slack Code.
 This will listen for App mention in your channel.  <br />
-e.g. Your App name @Node-Red-demo-app 
+e.g. Your App name @Node-Red-demo-app.
 
-```
-// write in your slack channel 
-@Node-Red-demo-app What's up?
-```
-Slack will answer you with a button and if your press on the button the action will be exected with a short answer back.
+Write in your Slack channel:
+`@Node-Red-demo-app What's up?`
+
+Slack will answer you with a button and if your press on the button the action will send an answer back.
 
 ![Active Communication](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-registry-example1.png)
 
 ```javascript
 
-// use the object to initialize your handlers. 
-// if you don't need all, clean it. 
+// initialize your handlers. 
 msg.SlackBolt = {
     actions: [],
     commands: [],
@@ -258,11 +252,19 @@ msg.SlackBolt.events.push(
 ## Node-Red Example
 
 copy paste into your
-see `/examples/example.json`
+see [Examples](https://github.com/fishme/node-red-contrib-slack-bolt/blob/main/examples/example.json)
 
 https://flows.nodered.org/flow/368f36cbacfeba00b253086438f9a74d
 
 <br /><br />
+
+## Common Errors
+
+`Error: An API error occurred: channel_not_found`<br />
+**Solution:** Your Slack App is not installed in the channel.
+
+`Error: An API error occurred: invalid_auth`<br />
+**Solution:** Token are wrong.
 
 ## Development
 
@@ -295,14 +297,6 @@ yarn build
 ### Testing Node Set in Node-RED
 
 [Read Node-RED docs](https://nodered.org/docs/creating-nodes/first-node#testing-your-node-in-node-red) on how to install the node set into your Node-RED runtime.
-
-### Common Errors
-
-`Error: An API error occurred: channel_not_found`<br />
-**Solution:** Your Slack App is not installed in the channel.
-
-`Error: An API error occurred: invalid_auth`<br />
-**Solution:** Token are wrong.
 
 ### Contact
 
