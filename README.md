@@ -2,7 +2,7 @@
 
 Control your Slack App via Node-Red! Slack Bolt integration.
 
-What you can do with this node-red plugin?
+What you can do with this [node-red](https://flows.nodered.org/node/@headless-architecture/node-red-contrib-slack-bolt) plugin?
 
 - send simple text messages
 - send complex block messages
@@ -15,6 +15,10 @@ What you can do with this node-red plugin?
 
 Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-started) for JavaScript with Node-Red.
 
+```shell
+npm i @headless-architecture/node-red-contrib-slack-bolt`
+```
+
 > [!IMPORTANT]
 > This is an alpha version, no grarranty for productive mode!
 
@@ -26,7 +30,7 @@ Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-s
 - [create new Slack App](https://api.slack.com/apps?new_app=1)
 - Choose "from an app manifest"
 - Choose your workspace
-- Copy from /docs/Slack/manifest.yml or manifest below
+- Copy from [here](https://github.com/fishme/node-red-contrib-slack-bolt/blob/main/docs/Slack/manifest.yml) or manifest below
 - Paste into YAML section
 - create app
 
@@ -88,7 +92,9 @@ settings:
 
 open your folder via favourite shell<br />
 
-`npm i @headless-architecture/node-red-contrib-slack-bolt`
+```shell
+npm i @headless-architecture/node-red-contrib-slack-bolt`
+```
 
 ### Node-Red Configuration
 
@@ -252,7 +258,7 @@ msg.SlackBolt.events.push(
 
 ## Node-Red Example
 
-copy paste into your
+Import into your project.
 see [Examples](https://github.com/fishme/node-red-contrib-slack-bolt/blob/main/examples/example.json)
 
 https://flows.nodered.org/flow/368f36cbacfeba00b253086438f9a74d
