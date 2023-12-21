@@ -2,39 +2,48 @@
 
 Control your Slack App via Node-Red! Slack Bolt integration.
 
-What you can do with this node?
+What you can do with this [node-red](https://flows.nodered.org/node/@headless-architecture/node-red-contrib-slack-bolt) plugin?
 
 - send simple text messages
 - send complex block messages
-- events: You can listen to any [Slack Events](https://api.slack.com/events)
-- actions: You can listen to user action and respond via Node-Red
-- commands: Create your own commands with your Slack App and listen via Node-Red
-- shortcuts: Create your own global or message based shortcuts and develop it with Node-Red
+- events: listen to any [Slack Events](https://api.slack.com/events)
+- actions: listen to user action and respond via Node-Red
+- commands: create your own commands with your Slack App and listen via Node-Red
+- shortcuts: create your own global or message based shortcuts and develop it with Node-Red
 - views: Slack views
-- messages: Listing for messages in a channel
+- messages: listing for messages in a channel
 
 Develop your [Slack app using Bolt](https://slack.dev/bolt-js/tutorial/getting-started) for JavaScript with Node-Red.
 
-``This is an alpha version, no grarranty for productive mode!``
+```shell
+npm i @headless-architecture/node-red-contrib-slack-bolt
+```
 
-# Usage
+> [!IMPORTANT]
+> This is an alpha version, no grarranty for productive mode!
 
+## Usage
 
-## Setup Slack App
+### Setup Slack App
 
-- open [Slack](https://api.slack.com/apps?new_app=1)
+- open [Slack App](https://api.slack.com/apps?new_app=1)
 - [create new Slack App](https://api.slack.com/apps?new_app=1)
-- Choose "from an app manifest"
+- Choose `from an app manifest`
 - Choose your workspace
-- Copy from /docs/Slack/manifest.yml or manifest below
+- Copy from [here](https://github.com/fishme/node-red-contrib-slack-bolt/blob/main/docs/Slack/manifest.yml) or manifest below
 - Paste into YAML section
 - create app
+- optional: If you need the app for events, then you will need a App-Level Token (see under Basic Information) select scope `connection:write`
 
-Follow the Node-RED Slack App Configuration. 
+> [!TIP]
+> Don't forget to install the app also into a channel.
+
+> [!NOTE]
+> Could be that the installation of your slack app takes longer than 60min.
 
 <details><summary>Slack Manifest</summary>
 
-```
+```yaml
 display_information:
   name: Node-Red-Integration
   description: Integrate Slack with Node-Red instance
@@ -80,24 +89,26 @@ settings:
 
 </details>
 
-## Node-RED Installation
+### Node-RED Installation
 
-open your folder via favourite shell
+open your folder via favourite shell<br />
 
-`npm i @headless-architecture/node-red-contrib-slack-bolt`
+```shell
+npm i @headless-architecture/node-red-contrib-slack-bolt
+```
 
-## Node-Red Configuration
+### Node-Red Configuration
 
-
-After sucessfull installation of `@headless-architecture/node-red-contrib-slack-bolt` search in your Node-RED toolbar for `slack`
+After the installation of `@headless-architecture/node-red-contrib-slack-bolt` search in your Node-RED toolbar for `slack`
 
 ![Slack Bolt Nodes](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-red-slackbolt-nodes.png)
 
-### Nodes
+#### Nodes
+
 - message: send text and block messages
 - registry: registration of slack actions, events, commands, messages, options, shortcuts and views
 
-**Slack App Configuration**
+#### Slack App Configuration
 
 ![Slack App Configuration](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/slack-app-config.png)
 
@@ -109,7 +120,8 @@ After sucessfull installation of `@headless-architecture/node-red-contrib-slack-
 | Port | default is 3000 [more info](https://slack.dev/bolt-js/concepts#socket-mode) |
 | App Token | Basic information -> App-level-Token -> create new -> choose connections:write [slack app](https://api.slack.com/apps/) |
 
-**Message**
+#### Message
+
 With this node, Node-RED is able to send direct messages into a channel. Private message to a person is not possible (yet).
 
 ![Slack Message](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/message-config.png)
@@ -126,7 +138,7 @@ With this node, Node-RED is able to send direct messages into a channel. Private
 <details><summary><b>Block Example</b></summary>
 Simple Block for choosing a date
 
-```
+```json
 [
     {
         "type": "section",
@@ -146,12 +158,13 @@ Simple Block for choosing a date
     }
 ]
 ```
+
 </details>
 
-  - [Block Kit Builder](https://app.slack.com/block-kit-builder)
-  - [Formating Blocks](https://api.slack.com/reference/surfaces/formatting#rich-layouts)
+- [Block Kit Builder](https://app.slack.com/block-kit-builder)
+- [Formating Blocks](https://api.slack.com/reference/surfaces/formatting#rich-layouts)
 
-**Registry**
+#### Registry
 
 This node enalbe the following Slack functions.
 
@@ -172,23 +185,20 @@ All listener needs to add once. Therefor create a Infection with:
 <br />
 Connect a function node with the following code.
 
-
 Magic Slack Code.
 This will listen for App mention in your channel.  <br />
-e.g. Your App name @Node-Red-demo-app 
+e.g. Your App name @Node-Red-demo-app.
 
-```
-// write in your slack channel 
-@Node-Red-demo-app What's up?
-```
-Slack will answer you with a button and if your press on the button the action will be exected with a short answer back.
+Write in your Slack channel:
+`@Node-Red-demo-app What's up?`
+
+Slack will answer you with a button and if your press on the button the action will send an answer back.
 
 ![Active Communication](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-registry-example1.png)
 
-```
+```javascript
 
-// use the object to initialize your handlers. 
-// if you don't need all, clean it. 
+// initialize your handlers. 
 msg.SlackBolt = {
     actions: [],
     commands: [],
@@ -247,58 +257,62 @@ msg.SlackBolt.events.push(
 
 ```
 
+## Node-Red Example
 
+Import into your project.
+see [Examples](https://github.com/fishme/node-red-contrib-slack-bolt/blob/main/examples/example.json)
 
+https://flows.nodered.org/flow/368f36cbacfeba00b253086438f9a74d
 
-# Node-Red Example
-copy paste into your
-see `/examples/example.json`
-
-<details><summary><b>Example</b></summary>
-[Slack Bolt Integration](https://flows.nodered.org/flow/368f36cbacfeba00b253086438f9a74d)
-</details>
 <br /><br />
 
-# Development
+## Common Errors
 
-## Installation
+`Error: An API error occurred: channel_not_found`<br />
+**Solution:** Your Slack App is not installed in the channel.
+
+`Error: An API error occurred: invalid_auth`<br />
+**Solution:** Token are wrong.
+
+## Development
+
+### Installation
+
  1. clone this repo `git clone git@github.com:fishme/node-red-contrib-slack-bolt.git`
  2. This project is designed to work with `yarn`. If you don't have `yarn` installed, you can install it with `npm install -g yarn`.
  3. Install dependencies: `yarn install`.
 
-## Dependencies
+### Dependencies
 
 Node version >= 18.0.0
 
-## Developing Nodes
+### Developing Nodes
+
+Link your project into your local Node-Red instance. 
+```shell
+cd /path-to-node-red/.node-red
+npm install ./path-to-this-project
+```
 
 Build & Test in Watch mode:
 
-```
+```shell
 yarn dev
 ```
 
-## Building Node Set
+### Building Node Set
 
 Create a production build:
 
-```
+```shell
 yarn build
 ```
 
-## Testing Node Set in Node-RED
+### Testing Node Set in Node-RED
 
 [Read Node-RED docs](https://nodered.org/docs/creating-nodes/first-node#testing-your-node-in-node-red) on how to install the node set into your Node-RED runtime.
 
-## Common Errors
-
-`Error: An API error occurred: channel_not_found`
-**Solution:** Your Slack App is not installed in the channel.
-
-`Error: An API error occurred: invalid_auth`
-**Solution:** Token are wrong.
-
-## Contact
+### Contact
 
 **Issues:** [https://github.com/fishme/node-red-contrib-slack-bolt/issues](https://github.com/fishme/node-red-contrib-slack-bolt/issues)<br />
 **Project Link:** [https://github.com/fishme/node-red-contrib-slack-bolt](https://github.com/fishme/node-red-contrib-slack-bolt)<br />
@@ -306,12 +320,10 @@ yarn build
 
 **LinkedIn:** [Go in touch with me](https://www.linkedin.com/in/david-hohl/)
 
-## License
+### License
 
 MIT © David Hohl
 
+### Thank you
 
-## Thank you
-
-Alexk111 https://github.com/alexk111/node-red-node-typescript-starter.git for providing the Node-Red Typescript starter
-
+Alexk111 for providing the Node-Red [Typescript starter](https://github.com/alexk111/node-red-node-typescript-starter.git).
