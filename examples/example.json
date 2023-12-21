@@ -2,7 +2,7 @@
   {
     "id": "1fd29692524d1ecb",
     "type": "tab",
-    "label": "Gateway",
+    "label": "Slack Bolt",
     "disabled": false,
     "info": "",
     "env": []
@@ -129,7 +129,7 @@
     "z": "1fd29692524d1ecb",
     "g": "9abaac9bbddc9bce",
     "name": "Slack Registration",
-    "client": "a2eb2e51b1167936",
+    "client": "",
     "x": 810,
     "y": 700,
     "wires": [["b4ccc9f550d6192e"]]
@@ -272,7 +272,7 @@
     "z": "1fd29692524d1ecb",
     "g": "9abaac9bbddc9bce",
     "name": "",
-    "client": "a2eb2e51b1167936",
+    "client": "",
     "channel": "#main",
     "blocks": "",
     "property": "payload",
@@ -313,15 +313,5 @@
     "x": 530,
     "y": 840,
     "wires": []
-  },
-  {
-    "id": "a2eb2e51b1167936",
-    "type": "slack-bolt-app",
-    "name": "Demo-app",
-    "token": "xoxb-6273178474546-6296269126880-ECspr3jlq6Hk6QdxtvuvJBsy",
-    "signingSecret": "799dfcf596754ed8a6692c5dc1e7e7d4",
-    "socketMode": true,
-    "port": "3000",
-    "appToken": "xapp-1-A06814CKD51-6366200613638-e1cf3e87beb6956b5c5e9d8ed9e8421da4b42e4fbe5a6ab9493e6c553b26052a"
   }
 ]
