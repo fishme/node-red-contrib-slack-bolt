@@ -16,7 +16,7 @@ RED.nodes.registerType<SlackBoltAppEditorNodeProperties>('slack-bolt-app', {
     appToken: { value: '' },
   },
   label: function () {
-    return this.name || 'slack bolt app';
+    return this.name || 'Slack Bolt app';
   },
   oneditprepare: function () {
     $('#node-input-logLevel').typedInput({

@@ -8,6 +8,7 @@ export interface SlackBoltAppEditorNodeProperties
   token: string;
   signingSecret: string;
   socketMode: boolean;
+
   port: number;
   appToken: string;
   logLevel: string;

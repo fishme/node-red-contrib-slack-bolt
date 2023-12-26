@@ -3,14 +3,15 @@
 
   ### Getting Started
   I needs a installed and published Slack App into your channels. Follow this [Instructions]().
+  For of the configuration look into your [your Slack App](https://api.slack.com/apps/)
 
   ### Configuration
   : Name : slack instance name
   for the next configuration open your
 
-  : Bot Token: OAuth/Permissions -> Bot User OAuth Token [slack app](https://api.slack.com/apps/)
+  : Bot Token: communciation token (starts with xoxb-) see [Slack App](https://api.slack.com/apps/) "OAuth/Permissions" -> "Bot User OAuth Token"
   : Log Level: Slack log levels [more info](https://slack.dev/bolt-js/concepts#logging)
-  : Socket: turn the socket mode on, if you want to listen for changes in your channel. It is required for the registry nodes
+  : Socket: activate the socket mode, if you want to listen for changes in your channel. It is required for the registry nodes. see [Slack App](https://api.slack.com/apps/) "Socked Mode"
   : Port: default is 3000 [more info](https://slack.dev/bolt-js/concepts#socket-mode)
-  : App Token: Basic information -> App-level-Token -> create new -> choose connections:write [slack app](https://api.slack.com/apps/)
+  : App Token: Slack App Token (starts with xapp-) see [slack app](https://api.slack.com/apps/) "Basic information" -> "App-level-Token" -> create new -> choose connections:write
 </script>

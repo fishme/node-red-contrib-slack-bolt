@@ -7,7 +7,7 @@ export const messages = (
   configuration: IConfiguration[],
   send: any,
   done: any
-) => {
+): number => {
   configuration.forEach((item: IConfiguration) => {
     SlackApp.message(item.id, async (params) => {
       // Acknowledge the action

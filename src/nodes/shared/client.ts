@@ -1,12 +1,18 @@
 import { App, LogLevel } from '@slack/bolt';
 
-import {
-  SlackBoltAppNode,
-  SlackBoltAppNodeDef,
-} from '../slack-bolt-app/modules/types';
+import { SlackBoltAppNode, SlackBoltAppNodeDef } from '../slack-bolt-app/modules/types';
+
+//import { ConversationStorage } from './storage';
 
 const DefaultPort: string = '3000';
 
+/**
+ *  todos for next versions
+ *  Authorization https://slack.dev/bolt-js/concepts#authorization
+ *  Storage https://slack.dev/bolt-js/concepts#conversation-store
+ *  Middleware https://slack.dev/bolt-js/concepts#global-middleware
+ *  Custom HTTP routes: https://slack.dev/bolt-js/concepts#custom-routes
+ */
 const connect = (config: SlackBoltAppNodeDef): App => {
   // signingSecret needed for Auth0
   const configuration = {
@@ -15,6 +21,7 @@ const connect = (config: SlackBoltAppNodeDef): App => {
     appToken: config.appToken,
     socketMode: config.socketMode,
     logLevel: LogLevel.ERROR,
+    //convoStore: new ConversationStorage(),
   };
 
   return new App(configuration);

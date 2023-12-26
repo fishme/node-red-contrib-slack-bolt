@@ -7,7 +7,7 @@ declare const RED: EditorRED;
 RED.nodes.registerType<SlackBoltMessageEditorNodeProperties>(
   'slack-bolt-message',
   {
-    category: 'slack',
+    category: 'Slack',
     color: '#5BB381',
     defaults: {
       name: { value: '' },
