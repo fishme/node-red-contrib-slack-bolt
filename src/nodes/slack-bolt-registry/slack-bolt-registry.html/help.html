@@ -1,3 +1,129 @@
-<script type="text/html" data-help-name="slack-bolt-registry">
-  <p>Node description goes here.</p>
+<script type="text/markdown" data-help-name="slack-bolt-registry">
+  This node enable the following Slack functions.
+
+  - Actions
+  - Events
+  - Views
+  - Messages (listener, sending of messages see message node)
+  - Options
+  - Shortcuts
+  - Commands
+
+  Below of the node, you can verify the registrations of your events.
+  A, E, V, M, O, S, C; Starting letter of the liste above.
+
+  Structure for all listener
+
+  [Events example](https://slack.dev/bolt-js/concepts#event-listening)
+
+  ```
+    msg.SlackBolt.events.push({
+
+        'id': 'YOUR_CUSTOM_ID',
+        'callback':
+            async ({ event, client, logger }) => {
+                // your code
+            }
+
+    });
+  ```
+
+  [Example Action](https://slack.dev/bolt-js/concepts#action-listening)
+
+  ```
+  msg.SlackBolt.actions.push({
+    'id': 'YOUR_CUSTOM_ID',
+    'callback':
+        async ({ ack }) => {
+            // your code
+        }
+  });
+
+  // responding to actions
+  msg.SlackBolt.actions.push({
+  'id': 'YOUR_CUSTOM_ID',
+  'callback':
+    async ({ ack, say }) => {
+        // your code
+    }
+  });
+  ```
+
+  [Example Commands](https://slack.dev/bolt-js/concepts#commands)
+
+  ```
+  msg.SlackBolt.commands.push({
+
+    'id': '/YOUR_COMMAND',
+    'callback':
+        async ({ command, ack, respond }) => {
+            // your code
+        }
+  });
+  ```
+
+  [Example Shortcuts](https://slack.dev/bolt-js/concepts#shortcuts)
+
+  ```
+  msg.SlackBolt.shortcuts.push({
+    'id': 'YOUR_CUSTOM_ID',
+    'callback':
+        async ({ shortcut, ack, client, logger }) => {
+            // your code
+        }
+  });
+
+  ```
+
+  [Example Options](https://slack.dev/bolt-js/concepts#options)
+
+  ```
+  msg.SlackBolt.options.push({
+    'id': 'YOUR_CUSTOM_ID',
+    'callback':
+        async ({ options, ack }) => {
+            // your code
+        }
+  });
+
+  ```
+
+  [Example Messages](https://slack.dev/bolt-js/concepts#message-listening)
+
+  ```
+  msg.SlackBolt.messages.push({
+    'id': 'YOUR_CUSTOM_ID',
+    'callback':
+        async ({ message, say }) => {
+            // your code
+        }
+  });
+  ```
+
+  [Example Views](https://slack.dev/bolt-js/concepts#view-submissions)
+
+  ```
+  msg.SlackBolt.views.push({
+
+    'id': 'YOUR_CUSTOM_ID',
+    'callback':
+        async ({ ack, body, view, client, logger }) => {
+        // your code
+    }
+  });
+  ```
+
+  ### Input
+
+  1. msg object
+     : SlackBolt (Object) : defintion of the listener see list above `msg.SlackBolt.<LISTENER>.push(...)`
+
+  ### Output
+
+  1. Standard output
+     : payload (string) : slack response
+
+  ```
+
+  ```
 </script>

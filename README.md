@@ -114,11 +114,11 @@ After the installation of `@headless-architecture/node-red-contrib-slack-bolt` s
 
 | Name | Description |
 | --- | --- |
-| Bot Token *required* | Active Communciation Token OAuth/Permissions -> Bot User OAuth Token [your Slack App](https://api.slack.com/apps/) |
+| Bot Token *required* | communciation token (starts with xoxb-) see [Slack App](https://api.slack.com/apps/) "OAuth/Permissions" -> "Bot User OAuth Token" |
 | Log Level | Slack log levels [more info](https://slack.dev/bolt-js/concepts#logging) |
-| Socket | activate the socket mode, if you want to listen for changes in your channel. It is required for the registry nodes. |
+| Socket | activate the socket mode, if you want to listen for changes in your channel. It is required for the registry nodes. see [Slack App](https://api.slack.com/apps/) "Socked Mode" |
 | Port | default is 3000 [more info](https://slack.dev/bolt-js/concepts#socket-mode) |
-| App Token | Basic information -> App-level-Token -> create new -> choose connections:write [slack app](https://api.slack.com/apps/) |
+| App Token | Slack App Token (starts with xapp-) see [slack app](https://api.slack.com/apps/) "Basic information" -> "App-level-Token" -> create new -> choose connections:write  |
 
 #### Message
 
@@ -133,7 +133,7 @@ With this node, Node-RED is able to send direct messages into a channel. Private
 | Property | variable of the content for a message |
 | Topic | text or block message  |
 | Text | direct message (overwrite input stream)  |
-| Blocks | JSON format, complext messages with interactions  |
+| Blocks | JSON format, complex messages with interactions (overwrite input stream)  |
 <br />
 <details><summary><b>Block Example</b></summary>
 Simple Block for choosing a date
@@ -166,7 +166,7 @@ Simple Block for choosing a date
 
 #### Registry
 
-This node enalbe the following Slack functions.
+This node enable the following Slack functions.
 
 - Actions
 - Events
@@ -175,6 +175,9 @@ This node enalbe the following Slack functions.
 - Options
 - Shortcuts
 - Commands
+
+Below of the node, you can verify the registrations of your events.
+A, E, V, M, O, S, C; Starting letter of the liste above.
 
 ![Node Registry Node-RED example](https://raw.githubusercontent.com/fishme/node-red-contrib-slack-bolt/main/docs/img/node-registry-example.png)
 <br /><br />
@@ -308,6 +311,50 @@ Create a production build:
 yarn build
 ```
 
+### Roadmap
+
+Not or not full implementented
+
+#### Knowing not critical Bugs
+
+- Slack App: Fix Logging selection (not working)
+
+#### Slack Features
+
+##### Basic concepts
+
+- Workflow [](https://slack.dev/bolt-js/concepts#creating-steps)
+
+##### Advanced concepts
+
+- Slack Error Handling [](https://slack.dev/bolt-js/concepts#error-handling)
+- Global Middleware [](https://slack.dev/bolt-js/concepts#global-middleware)
+- Authorization [](https://slack.dev/bolt-js/concepts#authorization)
+- Storage [](https://slack.dev/bolt-js/concepts#conversation-store)
+- Middleware [](https://slack.dev/bolt-js/concepts#global-middleware)
+- Customizing a receiver [](https://slack.dev/bolt-js/concepts#receiver)
+- Custom HTTP routes: [](https://slack.dev/bolt-js/concepts#custom-routes)
+
+##### Node Features
+
+- automatic Jest tests
+- typescript typings (remove any and unknown)
+- add listener node (selection of listener mode and code block)
+
+##### Documentation
+
+- documentation page
+- node documentation (improvment)
+- code documentation
+- Youtube tutorials (create slack app, configuration of slack bot by each listener)
+- flow examples
+
+##### Build
+
+- replace rollup with webpack
+- github action build (bring tests back)
+
+ 
 ### Testing Node Set in Node-RED
 
 [Read Node-RED docs](https://nodered.org/docs/creating-nodes/first-node#testing-your-node-in-node-red) on how to install the node set into your Node-RED runtime.

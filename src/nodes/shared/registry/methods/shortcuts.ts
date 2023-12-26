@@ -7,7 +7,7 @@ export const shortcuts = (
   configuration: IConfiguration[],
   send: any,
   done: any
-) => {
+): number => {
   configuration.forEach((item: IConfiguration) => {
     SlackApp.shortcut(item.id, async (params) => {
       // Acknowledge the action
